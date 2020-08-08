@@ -1,0 +1,139 @@
+<div class="row searchBar">
+    {{> twitter/views/partials/navbar}}
+    <div class="">
+        <h1>Help Center</h1>
+    </div>
+	<form action="{{app_context}}/search" id="search_form" method="post">
+        {{#if config.settings.show_featured_articles}}
+		    <div class="col-md-4 col-md-offset-4 search_bar">
+        {{else}}
+            <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 search_bar">
+        {{/if}}
+			<div class="input-group">
+				<input type="text" name="frm_search" id="frm_search" class="form-control input-lg" placeholder="search">
+				<span class="input-group-btn">
+					<button class="btn btn-default btn-lg" id="btn_search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+				</span>
+			</div>
+            {{#ifCond config.settings.typeahead_search '===' true}}
+            <div id="searchResult" class="hidden col-lg-12">
+                <ul class="list-group searchResultList"></ul>
+            </div>
+            {{/ifCond}}
+		</div>
+	</form>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <h2 class="text-center">Twitter Support</h2>
+        <p class="subheading">Get instant answers for the most common questions and learn how to use 140 characters like a pro.</p>
+    </div>
+</div>
+<div>
+    {{#if config.settings.show_featured_articles}}
+        <div class="row featuredArticles">
+            <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                {{#each featured_results}}
+                    <div class="col-md-3 col-lg-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body featuredPanel">
+                                <h4>{{this.kb_title}}</h4>
+                            </div>
+                             <div class="panel-footer featuredArticlesFooter">
+                                {{#if this.kb_permalink}}
+                                    <a href="/{{@root.config.settings.route_name}}/{{this.kb_permalink}}">MORE</a>
+                                {{else}}
+                                    <a href="/{{@root.config.settings.route_name}}kb/{{this._id}}">MORE</a>
+                                {{/if}}  
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}       
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+    {{else}}
+        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+    {{/if}}
+		{{#if search_results.length}}
+			<div class="panel panel-default" style="margin-top: 30px;">
+				{{#ifCond routeType '===' 'topic'}}
+                    <li class="list-group-item list-group-heading">{{__ "Topic"}}: {{search_term}}</li>
+                {{else}}
+                    <li class="list-group-item list-group-heading">{{__ "Results for"}}: {{search_term}}</li>
+                {{/ifCond}}
+				<div class="panel-body">
+					<ul class="list-group">
+						{{#each search_results}}
+							{{#if this.kb_permalink}}
+								<li class="list-group-item">
+									<h4>
+										<a href="/{{@root.config.settings.route_name}}/{{this.kb_permalink}}">{{this.kb_title}}</a>
+                                        {{#if @root.config.settings.show_published_date}}
+                                            {{#if @root.config.settings.show_view_count}}
+                                                <span class="pull-right view_count">&nbsp; / <strong>Date:</strong> {{format_date this.kb_published_date}}</span>
+                                            {{else}}
+                                                <span class="pull-right view_count"><strong>Date:</strong> {{format_date this.kb_published_date}}</span>
+                                            {{/if}}
+                                        {{/if}}
+										{{#if @root.config.settings.show_view_count}}
+                                            <span class="pull-right view_count"><strong>View count:</strong> {{view_count this.kb_viewcount}}</span>
+										{{/if}}
+									</h4>
+								</li>
+							{{else}}
+								<li class="list-group-item">
+									<h4>
+										<a href="/{{@root.config.settings.route_name}}/{{this._id}}">{{this.kb_title}}</a>
+                                        {{#if @root.config.settings.show_published_date}}
+                                            {{#if @root.config.settings.show_view_count}}
+                                                <span class="pull-right view_count">&nbsp; / <strong>Date:</strong> {{format_date this.kb_published_date}}</span>
+                                            {{else}}
+                                                <span class="pull-right view_count"><strong>Date:</strong> {{format_date this.kb_published_date}}</span>
+                                            {{/if}}
+                                        {{/if}}
+										{{#if @root.config.settings.show_view_count}}
+                                            <span class="pull-right view_count"><strong>View count: </strong>{{view_count this.kb_viewcount}}</span>
+										{{/if}}
+									</h4>
+								</li>
+							{{/if}}
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		{{else}}
+			<div class="panel panel-default" style="margin-top: 30px;">
+				<div class="panel-heading">Trending topics</div>
+				<div class="panel-body">
+					<ul class="list-group">
+						{{#each top_results}}
+							 <li class="list-group-item">
+								 <h4>
+									{{#if kb_permalink}}
+										<a href="/{{@root.config.settings.route_name}}/{{this.kb_permalink}}">{{this.kb_title}}</a>
+									{{else}}
+										<a href="/{{@root.config.settings.route_name}}/{{this._id}}">{{this.kb_title}}</a>
+									{{/if}}
+                                    {{#if @root.config.settings.show_published_date}}
+                                        {{#if @root.config.settings.show_view_count}}
+                                            <span class="pull-right view_count">&nbsp; / <strong>Date:</strong> {{format_date this.kb_published_date}}</span>
+                                        {{else}}
+                                            <span class="pull-right view_count"><strong>Date:</strong> {{format_date this.kb_published_date}}</span>
+                                        {{/if}}
+                                    {{/if}}
+									{{#if @root.config.settings.show_view_count}}
+								 		<span class="pull-right view_count"><strong>View count:</strong> {{view_count this.kb_viewcount}}</span>
+									{{/if}}
+									{{#if this.kb_password}}
+										<span class="pull-right view_count" style="padding-right: 5px;"><i class="fa fa-key"></i></span>
+									{{/if}}
+								 </h4>
+							 </li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		{{/if}}
+	</div>
+</div>

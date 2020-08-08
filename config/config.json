@@ -28,7 +28,7 @@
         },
         "allow_voting": true,
         "google_analytics": "",
-        "theme": "",
+        "theme": "landin",
         "show_logon": true,
         "add_header_anchors": false,
         "typeahead_search": true,
@@ -39,7 +39,7 @@
         "article_versioning": false,
         "api_auth_token": "",
         "api_allowed": false,
-        "locale": "en",
+        "locale": "fa",
         "env": "",
         "style": {
             "cssHeaderBackgroundColor": "",
