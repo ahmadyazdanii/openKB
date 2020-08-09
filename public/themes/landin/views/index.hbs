@@ -1,27 +1,69 @@
 <div class="row searchBar">
     {{> landin/views/partials/navbar}}
-    <div>
-        <h1>چطور میتونیم کمکتون کنیم؟</h1>
-    </div>
-	<form action="{{app_context}}/search" id="search_form" method="post">
-        {{#if config.settings.show_featured_articles}}
-		    <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 search_bar">
-        {{else}}
-            <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 search_bar">
-        {{/if}}
-			<div class="input-group">
-				<input type="text" name="frm_search" id="frm_search" class="form-control input-lg" placeholder="سوالتون رو اینجا جست و جو کنید...">
-				<span class="input-group-btn">
-					<button class="btn btn-lg" id="btn_search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-				</span>
-			</div>
-            {{#ifCond config.settings.typeahead_search '===' true}}
-            <div id="searchResult" class="hidden col-lg-12">
-                <ul class="list-group searchResultList"></ul>
+    <div class="container">
+        <div>
+            <h1>چطور میتونیم کمکتون کنیم؟</h1>
+        </div>
+        <form action="{{app_context}}/search" id="search_form" method="post">
+            {{#if config.settings.show_featured_articles}}
+                <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 search_bar">
+            {{else}}
+                <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 search_bar">
+            {{/if}}
+                <div class="input-group">
+                    <input type="text" name="frm_search" id="frm_search" class="form-control input-lg" placeholder="سوالتون رو اینجا جست و جو کنید...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-lg" id="btn_search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                </div>
+                {{#ifCond config.settings.typeahead_search '===' true}}
+                <div id="searchResult" class="hidden col-lg-12">
+                    <ul class="list-group searchResultList"></ul>
+                </div>
+                {{/ifCond}}
             </div>
-            {{/ifCond}}
-		</div>
-	</form>
+        </form>
+    </div>
+</div>
+<div class="intro-tags">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                <div class="row" style="flex-direction: row-reverse;">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <a href="/search/تنظیمات" class="tag-item">
+                            تنظیمات
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <a href="/search/عیب یابی" class="tag-item">
+                            عیب یابی
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <a href="/search/اپلیکیشن" class="tag-item">
+                            اپلیکیشن ها
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <a href="/search/پرداخت" class="tag-item">
+                            پرداخت و هزینه ها
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <a href="/search/ابزارک" class="tag-item">
+                            ابزارک گفت و گو
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <a href="/search/ابزارک" class="tag-item">
+                            نصب و راه اندازی
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
