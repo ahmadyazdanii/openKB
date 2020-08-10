@@ -72,6 +72,7 @@
     <script src="{{app_context}}/simplemde/simplemde.min.js"></script>
     <script src="{{app_context}}/markdown-it/markdown-it.min.js"></script>
     <script src="{{app_context}}/themes/landin/js/index.js"></script>
+    <script type="text/javascript" async="" src="https://app.raychat.io/scripts/js/40412244-c183-4c1d-a416-81adb85308a1?rid=5f088150fbf0957780c95540&amp;href=https://landin.ir/pricing/"></script>
     {{#ifCond config.settings.typeahead_search '===' true}}
       <script src="{{app_context}}/lunr/lunr.min.js"></script>
     {{/ifCond}}
@@ -94,6 +95,30 @@
     <input type="hidden" id="input_notify_message_type" value="{{message_type}}">
     <div id="notify_message"></div>
     {{#if show_footer}}
+      <hr style="margin-top: 120px; margin-bottom: 0;">
+      <div class="container">
+        <div class="col-md-10 col-sm-12 col-md-offset-1 col-lg-10 col-lg-offset-1">
+          <div class="noanswer">
+            <div class="noanswer-texts">
+              <div class="noanswer-texts-title">
+                جوابتون رو پیدا نکردید؟
+              </div>
+              <div class="noanswer-texts-desc">
+                می‌تونید برامون مقاله پیشنهاد بدید، خودتون بنویسید یا با ما آنلاین گفتگو کنید.
+              </div>
+            </div>
+            <div class="noanswer-buttons">
+              <a href="/suggest" class="noanswer-button">
+                مقاله ای پیشنهاد دهید
+              </a>
+              <span>یا</span>
+              <a onclick="window.Raychat.toggle()" class="noanswer-button">
+                با ما گفتگو کنید
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
       <footer class="footer">
         <div class="container">
           <p class="text-muted text-center">{{__ "Powered by"}} <a href="https://openkb.markmoffat.com/" target="_blank">openKB</a></p>
