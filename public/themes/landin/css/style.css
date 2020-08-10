@@ -37,6 +37,18 @@ h2, .h2 {
     transition: all 0.5s ease;
 }
 
+.nav-blue {
+    display: none !important;
+}
+
+.nav-active .nav-blue {
+    display: block !important;
+}
+
+.nav-active .nav-white {
+    display: none !important;
+}
+
 .navbar-default .navbar-toggle {
     border: none !important;
 }
@@ -479,6 +491,14 @@ p.subheading {
     .navbar {
         background: rgba(255, 255, 255, 0.95) !important;
         border-bottom: 1px solid #eee !important;
+    }
+
+    .nav-blue {
+        display: block !important;
+    }
+    
+    .nav-white {
+        display: none !important;
     }
 
     .navbar-toggle {
