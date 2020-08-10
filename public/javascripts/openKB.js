@@ -51,9 +51,11 @@ $(document).ready(function(){
                     .done(function(response){
                         if(response.length === 0){
                             $('#searchResult').addClass('hidden');
+                            $('.searchBar .input-group').removeClass('no-shadow');
                         }else{
                             $('.searchResultList').empty();
-                            $('.searchResultList').append('<li class="list-group-item list-group-heading">Search results</li>');
+                            $('.searchResultList').append('<span></span>');
+                            $('.searchBar .input-group').addClass('no-shadow');
                             $.each(response, function(key, value){
                                 var faqLink = value.kb_permalink;
                                 if(typeof faqLink === 'undefined' || faqLink === ''){
@@ -68,6 +70,7 @@ $(document).ready(function(){
                 }else{
                     $('.searchResultList').empty();
                     $('#searchResult').addClass('hidden');
+                    $('.searchBar .input-group').removeClass('no-shadow');
                 }
             });
         }
