@@ -65,12 +65,6 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-        <h2 class="text-center">Twitter Support</h2>
-        <p class="subheading">Get instant answers for the most common questions and learn how to use 140 characters like a pro.</p>
-    </div>
-</div>
 <div>
     {{#if config.settings.show_featured_articles}}
         <div class="row featuredArticles">
@@ -145,32 +139,33 @@
 				</div>
 			</div>
 		{{else}}
-			<div class="panel panel-default" style="margin-top: 30px;">
-				<div class="panel-heading">Trending topics</div>
+			<div class="panel panel-default">
 				<div class="panel-body">
 					<ul class="list-group">
 						{{#each top_results}}
 							 <li class="list-group-item">
-								 <h4>
+								 <div class="article-item">
 									{{#if kb_permalink}}
 										<a href="/{{@root.config.settings.route_name}}/{{this.kb_permalink}}">{{this.kb_title}}</a>
 									{{else}}
 										<a href="/{{@root.config.settings.route_name}}/{{this._id}}">{{this.kb_title}}</a>
 									{{/if}}
-                                    {{#if @root.config.settings.show_published_date}}
-                                        {{#if @root.config.settings.show_view_count}}
-                                            <span class="pull-right view_count">&nbsp; / <strong>Date:</strong> {{format_date this.kb_published_date}}</span>
-                                        {{else}}
-                                            <span class="pull-right view_count"><strong>Date:</strong> {{format_date this.kb_published_date}}</span>
-                                        {{/if}}
-                                    {{/if}}
 									{{#if @root.config.settings.show_view_count}}
-								 		<span class="pull-right view_count"><strong>View count:</strong> {{view_count this.kb_viewcount}}</span>
+                                        <div class="view_count_wrapper">
+                                            <div class="rate">
+                                                <i class="one"></i>
+                                                <i class="two"></i>
+                                                <i class="three"></i>
+                                                <i class="four"></i>
+                                                <i class="five"></i>
+                                            </div>
+                                            <span class="pull-right view_count">{{view_count this.kb_viewcount}} بازدید</span>
+                                        </div>
 									{{/if}}
 									{{#if this.kb_password}}
 										<span class="pull-right view_count" style="padding-right: 5px;"><i class="fa fa-key"></i></span>
 									{{/if}}
-								 </h4>
+								 </div>
 							 </li>
 						{{/each}}
 					</ul>
