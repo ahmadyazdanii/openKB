@@ -133,6 +133,15 @@ handlebars = handlebars.create({
             }
             return moment(date).format('DD/MM/YYYY h:mmA');
         },
+        translate_date: function (date){
+            const actualDate = moment(date);
+            const now = moment();
+            const days = now.diff(actualDate, 'days');
+            if(days === 0){
+                return'امروز';
+            }
+            return`${days} روز پیش`;
+        },
         app_context: function (){
             if(config.settings.app_context !== undefined && config.settings.app_context !== ''){
                 return'/' + config.settings.app_context;
