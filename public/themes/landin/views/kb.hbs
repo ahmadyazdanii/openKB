@@ -48,9 +48,12 @@
         {{else}}
             <div class="col-md-8 col-lg-8" style="direction: rtl;">
         {{/if}}
-            <h1 style="font-weight: bold; font-size: 34px">{{result.kb_title}}</h1>
+            <h1 style="font-weight: bold; font-size: 34px; margin-bottom: 0;">{{result.kb_title}}</h1>
             {{#if config.settings.show_kb_meta}}
-            <h5 class="col-sm-12 col-lg-12" style="padding-right: 0; padding-bottom: 25px; margin-top: 0">
+            <h5
+                class="col-sm-12 col-lg-12"
+                style="padding-right: 0; padding-bottom: 25px; margin-top: 0; font-size: 13px;"
+            >
                 آخرین بروزرسانی: {{translate_date result.kb_last_updated}}
             </h5>
             {{/if}}
