@@ -540,6 +540,14 @@ p.subheading {
     color: #0077b5;
 }
 
+.article-page {
+    height: 160px !important;
+}
+
+.article-page h1 {
+    margin-top: 125px !important;
+}
+
 @media (max-width: 991px) {
     .navbar {
         padding: 10px 15px !important;
