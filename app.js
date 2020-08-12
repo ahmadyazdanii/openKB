@@ -137,10 +137,14 @@ handlebars = handlebars.create({
             const actualDate = moment(date);
             const now = moment();
             const days = now.diff(actualDate, 'days');
+            const months = now.diff(actualDate, 'months');
             if(days === 0){
                 return'امروز';
             }
-            return`${days} روز پیش`;
+            if(months === 0){
+                return`${days} روز پیش`;
+            }
+            return`${months} ماه پیش`;
         },
         app_context: function (){
             if(config.settings.app_context !== undefined && config.settings.app_context !== ''){
