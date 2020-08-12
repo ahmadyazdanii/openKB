@@ -630,6 +630,11 @@ p.subheading {
     color: #1F8DED !important;
 }
 
+.suggest-preview {
+    height: calc(100vh - 110px - 235px) !important;
+    overflow: auto;
+}
+
 @media (max-width: 991px) {
     .related-articles-section {
         display: none;

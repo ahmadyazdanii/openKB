@@ -498,7 +498,7 @@ router.post('/insert_kb', common.restrict, (req, res) => {
 // Update an existing KB article form action
 router.get('/suggest', common.suggest_allowed, (req, res) => {
     // set the template dir
-    common.setTemplateDir('admin', req);
+    common.setTemplateDir('user', req);
 
     res.render('suggest', {
         title: 'Suggest article',
