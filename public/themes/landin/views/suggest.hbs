@@ -1,38 +1,65 @@
-<div class="col-md-10 col-md-offset-1">
-	<div class="row">
+<div class="row searchBar article-page">
+    {{> landin/views/partials/navbar}}
+    <div class="container">
+        <div>
+            <h1></h1>
+        </div>
+        <form action="{{app_context}}/search" id="search_form" method="post">
+            {{#if config.settings.show_featured_articles}}
+                <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 search_bar">
+            {{else}}
+                <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 search_bar">
+            {{/if}}
+                <div class="input-group">
+                    <input type="text" name="frm_search" id="frm_search" class="form-control input-lg" placeholder="سوالتون رو اینجا جست و جو کنید...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-lg" id="btn_search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                </div>
+                {{#ifCond config.settings.typeahead_search '===' true}}
+                <div id="searchResult" class="hidden col-lg-12">
+                    <ul class="list-group searchResultList"></ul>
+                </div>
+                {{/ifCond}}
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container suggest-container">
+	<div class="col-md-12 suggest-contents">
 		<form method="post" id="edit_form" action="{{app_context}}/insert_suggest" data-toggle="validator">
 			<input type="hidden" name="frm_kb_id" value="{{result._id}}" />
 			<div id="header row">
-				<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-					<div class="form-group">
-						<label for="preview">{{__ "Article title"}} *</label><br/>
-						<input type="text" name="frm_kb_title" class="form-control input-normal" minlength="5" maxlength="200" value="{{result.kb_title}}" required/>
-					</div>
-				</div>
 				<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right">
 					<label for="preview">&nbsp;</label><br/>
 					<button id="frm_edit_kb_save" class="btn btn-success editor_btn_action" type="submit">{{__ "Suggest"}}</button>
 				</div>
-			</div>
-			<div id="editor-pagewrapper row">
-				<div class="col-xs-12 col-md-6">
-					<div class="form-group" id="editor-wrapper-suggest" class="suggest-editor">
-						<label for="editor">{{__ "Article body"}} (Markdown) *</label>
-                        <textarea id="editor" class="test" minlength="5" name="frm_kb_body" data-provide="markdown" data-hidden-buttons="cmdPreview" data-iconlibrary="fa" class="form-control" required>{{{result.kb_body}}}</textarea>
+				<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+					<div class="form-group">
+						<label for="preview">{{__ "Article title"}} *</label><br/>
+						<input type="text" name="frm_kb_title" class="frm_kb_title form-control input-normal" minlength="5" maxlength="200" value="{{result.kb_title}}" required/>
 					</div>
 				</div>
+			</div>
+			<div id="editor-pagewrapper row">
 				<div class="col-xs-12 col-md-6">
 					<div class="form-group" id="preview-wrapper">
 						<label for="preview">{{__ "Preview"}}</label>
 						<div id="preview" name="preview" class="form-control suggest-preview" rows="10"></div>
 					</div>
 				</div>
+				<div class="col-xs-12 col-md-6">
+					<div class="form-group" id="editor-wrapper-suggest" class="suggest-editor">
+						<label for="editor">{{__ "Article body"}} (Markdown) *</label>
+                        <textarea id="editor" class="test" minlength="5" name="frm_kb_body" data-provide="markdown" data-hidden-buttons="cmdPreview" data-iconlibrary="fa" class="form-control" required>{{{result.kb_body}}}</textarea>
+					</div>
+				</div>
 			</div>
 			<footer>
 				<div class="col-xs-12">
-					<div class="form-group">
+					<div class="form-group keywords">
 						<label>{{__ "Keywords"}}</label><br/>
-						<input type="text" class="form-control" name="frm_kb_keywords" id="frm_kb_keywords" value="{{result.kb_keywords}}">
+						<input type="text" class="frm_kb_keywords form-control" name="frm_kb_keywords" id="frm_kb_keywords" value="{{result.kb_keywords}}">
 					</div>
 				</div>
 			</footer>
