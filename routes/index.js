@@ -41,7 +41,7 @@ router.get('/', common.restrict, (req, res, next) => {
     common.dbQuery(db.kb, { kb_published: 'true' }, sortBy, config.settings.num_top_results, (err, top_results) => {
         common.dbQuery(db.kb, { kb_published: 'true', kb_featured: 'true' }, sortBy, featuredCount, (err, featured_results) => {
             res.render('index', {
-                title: 'openKB',
+                title: 'لندین | پایگاه دانش',
                 user_page: true,
                 homepage: true,
                 top_results: top_results,
@@ -501,7 +501,7 @@ router.get('/suggest', common.suggest_allowed, (req, res) => {
     common.setTemplateDir('user', req);
 
     res.render('suggest', {
-        title: 'Suggest article',
+        title: 'پیشنهاد مقاله',
         config: config,
         editor: true,
         is_admin: req.session.is_admin,
@@ -1354,7 +1354,7 @@ router.get(['/search/:tag', '/topic/:tag'], common.restrict, (req, res) => {
     common.dbQuery(db.kb, { _id: { $in: lunr_id_array }, kb_published: 'true', kb_versioned_doc: { $ne: true } }, null, null, (err, results) => {
         common.dbQuery(db.kb, { kb_published: 'true', kb_featured: 'true' }, sortBy, featuredCount, (err, featured_results) => {
             res.render('index', {
-                title: 'Search results: ' + search_term,
+                title: 'نتایج برای: ' + search_term,
                 search_results: results,
                 user_page: true,
                 session: req.session,
@@ -1401,7 +1401,7 @@ router.post('/search', common.restrict, (req, res) => {
     common.dbQuery(db.kb, { _id: { $in: lunr_id_array }, kb_published: 'true', kb_versioned_doc: { $ne: true } }, null, null, (err, results) => {
         common.dbQuery(db.kb, { kb_published: 'true', kb_featured: 'true' }, sortBy, featuredCount, (err, featured_results) => {
             res.render('index', {
-                title: 'Search results: ' + search_term,
+                title: 'نتایج برای: ' + search_term,
                 search_results: results,
                 user_page: true,
                 session: req.session,

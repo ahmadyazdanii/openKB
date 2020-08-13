@@ -96,42 +96,46 @@
 				{{#ifCond routeType '===' 'topic'}}
                     <li class="list-group-item list-group-heading">{{__ "Topic"}}: {{search_term}}</li>
                 {{else}}
-                    <li class="list-group-item list-group-heading">{{__ "Results for"}}: {{search_term}}</li>
+                    <li style="text-align: end;" class="list-group-item list-group-heading">{{__ "Results for"}}: {{search_term}}</li>
                 {{/ifCond}}
 				<div class="panel-body">
 					<ul class="list-group">
 						{{#each search_results}}
 							{{#if this.kb_permalink}}
 								<li class="list-group-item">
-									<h4>
+									<div class="article-item">
 										<a href="/{{@root.config.settings.route_name}}/{{this.kb_permalink}}">{{this.kb_title}}</a>
-                                        {{#if @root.config.settings.show_published_date}}
-                                            {{#if @root.config.settings.show_view_count}}
-                                                <span class="pull-right view_count">&nbsp; / <strong>Date:</strong> {{format_date this.kb_published_date}}</span>
-                                            {{else}}
-                                                <span class="pull-right view_count"><strong>Date:</strong> {{format_date this.kb_published_date}}</span>
-                                            {{/if}}
-                                        {{/if}}
 										{{#if @root.config.settings.show_view_count}}
-                                            <span class="pull-right view_count"><strong>View count:</strong> {{view_count this.kb_viewcount}}</span>
+                                            <div class="view_count_wrapper">
+                                                <div class="rate">
+                                                    <i class="one"></i>
+                                                    <i class="two"></i>
+                                                    <i class="three"></i>
+                                                    <i class="four"></i>
+                                                    <i class="five"></i>
+                                                </div>
+                                                <span class="pull-right view_count">{{view_count this.kb_viewcount}} بازدید</span>
+                                            </div>
 										{{/if}}
-									</h4>
+									</div>
 								</li>
 							{{else}}
 								<li class="list-group-item">
-									<h4>
+									<div class="article-item">
 										<a href="/{{@root.config.settings.route_name}}/{{this._id}}">{{this.kb_title}}</a>
-                                        {{#if @root.config.settings.show_published_date}}
-                                            {{#if @root.config.settings.show_view_count}}
-                                                <span class="pull-right view_count">&nbsp; / <strong>Date:</strong> {{format_date this.kb_published_date}}</span>
-                                            {{else}}
-                                                <span class="pull-right view_count"><strong>Date:</strong> {{format_date this.kb_published_date}}</span>
-                                            {{/if}}
-                                        {{/if}}
 										{{#if @root.config.settings.show_view_count}}
-                                            <span class="pull-right view_count"><strong>View count: </strong>{{view_count this.kb_viewcount}}</span>
+                                            <div class="view_count_wrapper">
+                                                <div class="rate">
+                                                    <i class="one"></i>
+                                                    <i class="two"></i>
+                                                    <i class="three"></i>
+                                                    <i class="four"></i>
+                                                    <i class="five"></i>
+                                                </div>
+                                                <span class="pull-right view_count">{{view_count this.kb_viewcount}} بازدید</span>
+                                            </div>
 										{{/if}}
-									</h4>
+									</div>
 								</li>
 							{{/if}}
 						{{/each}}
