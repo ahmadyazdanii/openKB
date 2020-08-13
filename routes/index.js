@@ -970,7 +970,7 @@ router.post('/user_update', common.restrict, (req, res) => {
 router.get('/login', (req, res) => {
     const db = req.app.db;
     // set the template
-    common.setTemplateDir('admin', req);
+    common.setTemplateDir('user', req);
 
     db.users.count({}, (err, user_count) => {
         // we check for a user. If one exists, redirect to login form otherwise setup
@@ -985,12 +985,12 @@ router.get('/login', (req, res) => {
             }
 
             res.render('login', {
-                title: 'Login',
+                title: 'ورود',
                 referring_url: referringUrl,
                 config: config,
                 message: common.clear_session_value(req.session, 'message'),
                 message_type: common.clear_session_value(req.session, 'message_type'),
-                show_footer: 'show_footer',
+                show_footer: '',
                 helpers: req.handlebars
             });
         }else{
