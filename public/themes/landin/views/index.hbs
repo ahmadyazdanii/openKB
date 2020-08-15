@@ -66,31 +66,7 @@
     </div>
 </div>
 <div>
-    {{#if config.settings.show_featured_articles}}
-        <div class="row featuredArticles">
-            <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-                {{#each featured_results}}
-                    <div class="col-md-3 col-lg-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body featuredPanel">
-                                <h4>{{this.kb_title}}</h4>
-                            </div>
-                             <div class="panel-footer featuredArticlesFooter">
-                                {{#if this.kb_permalink}}
-                                    <a href="/{{@root.config.settings.route_name}}/{{this.kb_permalink}}">MORE</a>
-                                {{else}}
-                                    <a href="/{{@root.config.settings.route_name}}kb/{{this._id}}">MORE</a>
-                                {{/if}}  
-                            </div>
-                        </div>
-                    </div>
-                {{/each}}       
-            </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 featured-articles">
-    {{else}}
-        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 featured-articles">
-    {{/if}}
+    <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 featured-articles">
 		{{#if search_results.length}}
 			<div class="panel panel-default" style="margin-top: 30px;">
 				{{#ifCond routeType '===' 'topic'}}
