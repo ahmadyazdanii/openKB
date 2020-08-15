@@ -115,19 +115,19 @@ router.post('/vote', (req, res) => {
                     // insert session id into table to stop muli-voters
                     db.votes.insert({ doc_id: req.body.doc_id, session_id: req.sessionID }, (err, newDoc) => {
                         res.writeHead(200, { 'Content-Type': 'application/text' });
-                        res.end('Vote successful');
+                        res.end('نظر شما با موفقیت ثبت شد');
                     });
                 });
             }else{
                 // User has already voted
                 res.writeHead(404, { 'Content-Type': 'application/text' });
-                res.end('User already voted');
+                res.end('شما قبلا نظر خود را ثبت کرده اید');
             }
         });
     }else{
         // Voting not allowed
         res.writeHead(404, { 'Content-Type': 'application/text' });
-        res.end('Voting now allowed');
+        res.end('امکان ثبت نظر وجود ندارد');
     }
 });
 
